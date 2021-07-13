@@ -15,8 +15,8 @@ import pandas as pd
 
 # Importar el data set
 dataset = pd.read_csv('Data.csv')
-X = dataset.iloc[:, :-1].values
-y = dataset.iloc[:, 3].values
+X = dataset.iloc[:, :-1].values #valores de todas las filas y columnas (excepto la ultima columna)
+y = dataset.iloc[:, 3].values #valores de todas las filas y ultima columna
 
 
 # Dividir el data set en conjunto de entrenamiento y conjunto de testing
