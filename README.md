@@ -3,6 +3,15 @@
 ## Traducido al español por [Juan Gabriel Gomila Salas](https://www.udemy.com/user/juangabriel2)
 
 
+
+
+
+Esto es un ejemplo de una linea :)
+
+
+
+
+
 ¿Estás interesado en conocer a fondo el mundo del Machine Learning? Entonces este curso está diseñado especialmente para ti!!
 
 Este curso ha sido diseñado por Data Scientists profesionales para compartir nuestro conocimiento y ayudarte a aprender la teoría compleja, los algoritmos y librerías de programación de un modo fácil y sencillo.
