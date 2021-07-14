@@ -4,8 +4,10 @@
 Created on Sun Mar  3 13:10:07 2019
 
 @author: juangabriel
-"""
 
+Modified by Luispaloma on Jul 14 2021
+"""
+#esto va a ser modificado
 # Regresión Lineal Múltiple
 
 # Cómo importar las librerías
@@ -21,10 +23,17 @@ y = dataset.iloc[:, 4].values
 
 # Codificar datos categóricos
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.compose import ColumnTransformer
+
 labelencoder_X = LabelEncoder()
 X[:, 3] = labelencoder_X.fit_transform(X[:, 3])
-onehotencoder = OneHotEncoder(categorical_features=[3])
-X = onehotencoder.fit_transform(X).toarray()
+
+ct = ColumnTransformer(
+    [('one_hot_encoder', OneHotEncoder(categories='auto'), [3])],    # The column numbers to be transformed (here is [0] but can be [0, 1, 3])
+    remainder='passthrough'                         # Leave the rest of the columns untouched
+)
+
+X = np.array(ct.fit_transform(X), dtype=float)
 
 # Evitar la trampa de las variables ficticias
 X = X[:, 1:]
@@ -49,10 +58,9 @@ regression.fit(X_train, y_train)
 y_pred = regression.predict(X_test)
 
 # Construir el modelo óptimo de RLM utilizando la Eliminación hacia atrás
-import statsmodels.formula.api as sm
-X = np.append(arr = np.ones((50,1)).astype(int), values = X, axis = 1)
+import statsmodels.api as sm
+X = np.append(arr = np.ones((50,1)).astype(int), values = X, axis = 1) #Se añade una columna de 1 al principio para que se calcule como el coeficiente 0.
 SL = 0.05
-
 #Se ha añadido el modificador .tolist() al X_opt para adaptarse a Python 3.7
 
 X_opt = X[:, [0, 1, 2, 3, 4, 5]]
